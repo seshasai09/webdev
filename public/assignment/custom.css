@@ -1,0 +1,22 @@
+
+.hline { width: 100%;
+    height:2px;
+    background-color: #0f0f0f ;}
+.no-gutter [class*="-2"] {
+    padding-left: 15px;
+    padding-left: 0px;
+}
+body{
+    background-color: #cacaca !important;
+}
+table{
+    background-color: #cacaca !important;
+    border-color: #0f0f0f !important;}
+a{
+    color: #101010 !important;
+}
+
+.navbar-inverse {
+    background-color: #cacaca;
+    border-color: #080808;
+}
