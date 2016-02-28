@@ -1,77 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Register</title>
 
-    <link href="https://code.jquery.com/jquery-1.12.0.min.js" >
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" rel="stylesheet">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <link  rel="stylesheet" type="text/css" href="custom.css" >
-
-
-    <script type="text/javascript">
-
-        function changetext(toggle_text){
-            if(toggle_text)
-                document.getElementById("type").innerHTML="Forms";
-            else
-                document.getElementById("type").innerHTML="Forms: Registration Forms";
-            return;
-
-        }
-    </script>
-
-
-</head>
-<body class="container ">
-<nav class="navbar navbar-inverse ">
-    <div class="container-fluid ">
-        <div class="navbar-header">
-            <a class="navbar-brand">Form Maker</a>
-        </div>
-        <div style="float:right">
-            <ul class="nav navbar-nav ">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="register.html">Register</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="Username.html">Username</a></li>
-                <li><a href="logout.html">Logout</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-    <div class="row no-gutter col-sm-2">
-    <div class="table-responsive  nopadding">
-        <table  class="table table-bordered table-striped " border="solid" style="float: left; empty-cells: show"  >
-            <tr>
-                <td><a href="home.html">Home</a></td>
-            </tr>
-            <tr>
-                <td><a href="profile.html"> Profile</a> </td>
-            </tr>
-            <tr>
-                <td> <a href="admin.html"> Admin </a></td>
-            </tr>
-            <tr>
-                <td><a href="forms.html"> Forms </a></td>
-            </tr>
-            <tr height="387px">
-                <td>&nbsp</td>
-            </tr>
-        </table>
-    </div>
-    </div>
 
 <div class="col-sm-10" >
         <h2 id="type">Forms: Registration Forms</h2>
         <ul class="nav nav-tabs" >
-            <li onclick=changetext(true)><a  href="forms.html">Forms</a></li>
+            <li onclick=changetext(true)><a  href="#/forms">Forms</a></li>
             <li  class="active" onclick="changetext(false)"><a data-toggle="tab" href="#menu2">Fields</a></li>
         </ul>
 
@@ -189,6 +121,3 @@
 
         </div>
 </div>
-
-</body>
-</html>
