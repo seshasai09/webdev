@@ -1,0 +1,43 @@
+
+<div class="col-sm-10" >
+    <div class="tab-content">
+        <div style="text-align: left"><h2>Admin</h2></div>
+        <div class="col-sm-10" >
+            Search Artist: <input type="text" ng-model="query">
+            <input type="button" value="Search Video " ng-click="search()">
+            <form id="register" name="resister" class="form-horizontal;" >
+
+                <table class="table table-responsive table-bordered ">
+                    <thead>
+                    <td><span ng-click="sortfield='user.username';reverse=!reverse"
+                              class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Title</td>
+                    <td><span ng-click="sortfield='user.password';reverse=!reverse"
+                              class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Video Id</td>
+                    <td><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Image</td>
+                    <!--<tr><td><input ng-model="nuser.username" type="text" placeholder="username"></td>-->
+                    <!--<td><input ng-model="nuser.password" type="password" placeholder="password"></td>-->
+                    <!--<td><input ng-model="nuser.roles" type="text" placeholder="role1|role2"></td>-->
+                    <!--<td>-->
+                    <!--<span class="glyphicon glyphicon-plus" ng-click="addUser()" aria-hidden="true"></span>-->
+                    <!--<span class="glyphicon glyphicon-ok" ng-click="updateUser()" aria-hidden="true"></span>-->
+                    <!--</td></tr>-->
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="track in tracks | filter: track.id.kind='youtube#video' ">
+                        <td>{{track.snippet.title}}</td>
+                        <!--<td>{{artist.name}}</td>-->
+                        <td><a ng-click="openVideo(track.id.videoId)">{{track.id.videoId}}</a></td>
+                        <!--<td><a ng-click="watch({{track.id.videoId}})">watch</a></td>-->
+                        <td><img ng-src="{{track.snippet.thumbnails.medium.url}}" ></image></td>
+                        <!--<td><img ng-src="{{track.image[0].#text}}"> </td>-->
+                    </tr>
+
+
+                    </tbody>
+                </table>
+
+            </form>
+        </div>
+    </div>
+</div>
+

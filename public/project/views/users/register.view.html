@@ -1,0 +1,42 @@
+
+<div ng-controller="RegisterController">
+<div><h2 class="col-sm-6">Register</h2></div>
+<br>
+<div class="col-sm-9" >
+    <form >
+        <div class="form-group row">
+            <label for="uername" class="col-sm-2 form-control-label">UserName</label>
+            <div class="col-sm-4">
+                <input type="text" class="form-control" ng-model="username" id="uername" placeholder="username">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="password" class="col-sm-2 form-control-label">Password</label>
+            <div class="col-sm-4">
+                <input type="password" class="form-control" ng-model="password" id="password" placeholder="password">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="vpassword" class="col-sm-2 form-control-label">Verify Password</label>
+            <div class="col-sm-4">
+                <input type="password" class="form-control" ng-model="vpassword" id="vpassword" placeholder="Password">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="email" class="col-sm-2 form-control-label">Email</label>
+            <div class="col-sm-4">
+                <input type="email" class="form-control" ng-model="email" id="email" placeholder="Email">
+            </div>
+        </div>
+
+        <div class="form-group row " >
+            <label for="register" class="col-sm-2 form-control-label"></label>
+            <div class="col-sm-4">
+                <input type="button" ng-click="register()" class="form-control" id="register" value="Register">
+            </div>
+        </div>
+
+
+    </form>
+</div>
+</div>
