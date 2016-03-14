@@ -9,8 +9,20 @@
         return {
             addTrackToFavorites: addTrackToFavorites,
             deleteTrackfromFavorites: deleteTrackfromFavorites,
-            getFavorites: getFavorites
+            getFavorites: getFavorites,
+            addReview: addReview
 
+        }
+
+        function addReview(track,review){
+            console.log(track.url)
+            for(f in userFavoriteList){
+                if(userFavoriteList[f].url==track.url){
+                    userFavoriteList[f].review =review;
+                    console.log(userFavoriteList[f].review);
+                    break;
+                }
+            }
         }
 
         function getFavorites(){
@@ -26,13 +38,13 @@
             console.log(userFavoriteList);
         }
 
-        function deleteTrackfromFavorites(track, callback){
+        function deleteTrackfromFavorites(track){
 
             var index=-1;
             for(var u in userFavoriteList)
             {
                 index++;
-                if(users[u].username == username )
+                if(userFavoriteList[u].url == track.url)
                 {
                    break;
                 }

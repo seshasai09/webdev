@@ -58,6 +58,11 @@
                     controller: "searchVideosController"
 
                 })
+                .when('/favorites',{
+                    templateUrl: "views/favorites/userFavorites.view.html",
+                    controller: "favoritesController"
+
+                })
                 .otherwise({
                     redirectTo:"/"
                 });
