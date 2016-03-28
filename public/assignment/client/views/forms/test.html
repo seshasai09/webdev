@@ -1,0 +1,104 @@
+<div class="tab-content">
+<div ng-switch="model.type">
+    <div  ng-switch-when="TEXT">
+        <div class="modal-header">
+            <h6 class="modal-title"><b>Single Line Field</b></h6>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                <div class="form-group ">
+                    <label  class="col-sm-10 form-control-label">Label</label><br>
+                    <input ng-model="model.field.label" type="text">
+                    <label class="col-sm-10 form-control-label">Placeholder</label><br>
+                    <input ng-model="model.field.placeholder" type="text">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div  ng-switch-when="TEXTAREA">
+        <div class="modal-header">
+            <h6 class="modal-title"><b>Multi Line Field</b></h6>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                <div class="form-group ">
+                    <label  class="col-sm-10 form-control-label">Label</label><br>
+                    <input ng-model="model.field.label" type="text">
+                    <label class="col-sm-10 form-control-label">Placeholder</label><br>
+                    <input ng-model="model.field.placeholder" type="text">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div  ng-switch-when="DATE">
+        <div class="modal-header">
+            <h6 class="modal-title"><b>Date Field</b></h6>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                <div class="form-group ">
+                    <label  class="col-sm-10 form-control-label">Label</label><br>
+                    <input ng-model="model.field.label" type="text">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div  ng-switch-when="CHECKBOX">
+        <div class="modal-header">
+            <h6 class="modal-title"><b>Checkbox Field</b></h6>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                <div class="form-group ">
+                    <label  class="col-sm-10 form-control-label">Label</label><br>
+                    <input ng-model="model.field.label" type="text">
+                    <label class="col-sm-10 form-control-label">Options</label><br>
+                    <textarea ng-repeat="option in model.field.options" >
+                        test{{option.label}}:{{option.value}}
+                    </textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div  ng-switch-when="OPTIONS">
+        <div class="modal-header">
+            <h6 class="modal-title"><b>Dropdown Field</b></h6>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                <div class="form-group ">
+                    <label  class="col-sm-10 form-control-label">Label</label><br>
+                    <input ng-model="model.field.label" type="text">
+                    <label class="col-sm-10 form-control-label">Options</label><br>
+                     <textarea ng-model='model.field.options'>
+
+                    </textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div  ng-switch-when="RADIO">
+        <div class="modal-header">
+            <h6 class="modal-title"><b>Radio Button Field</b></h6>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4">
+                <div class="form-group ">
+                    <label  class="col-sm-10 form-control-label">Label</label><br>
+                    <input ng-model="model.field.label" type="text">
+                    <label class="col-sm-10 form-control-label">Options</label><br>
+                    <textarea ng-model="model.field.options"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-5 col-lg-offset-4">
+    <button class="btn btn-warning" type="button"
+            ng-click="model.close()">Cancel</button>
+    <button class="btn btn-warning" type="button"
+            ng-click="model.ok()">Ok</button>
+</div>
+        </div>
+</div>
+    </div>

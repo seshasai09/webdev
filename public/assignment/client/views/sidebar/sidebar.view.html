@@ -1,0 +1,21 @@
+<div class="row no-gutter col-sm-2">
+    <div class="table-responsive  nopadding">
+        <table  class="table table-bordered table-striped " border="solid" style="float: left; empty-cells: show"  >
+            <tr>
+                <td><a href="#/home">Home</a></td>
+            </tr>
+            <tr ng-show="currentUser!=null">
+                <td><a  href="#/profile">Profile</a></td>
+            </tr>
+            <tr ng-show="(currentUser!=null && admin)">
+                <td><a  href="#/admin">Admin</a></td>
+            </tr>
+            <tr ng-show="currentUser!=null" >
+                <td><a href="#/forms"> Forms </a></td>
+            </tr>
+            <tr height="300px">
+                <td>&nbsp</td>
+            </tr>
+        </table>
+    </div>
+    </div>

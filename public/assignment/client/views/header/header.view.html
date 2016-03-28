@@ -1,0 +1,17 @@
+<nav ng-controller="HeaderController as model" class="navbar navbar-inverse" >
+    <div class="container-fluid ">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Form Maker</a>
+        </div>
+        <div style="float:right">
+            <ul class="nav navbar-nav ">
+                <li><a ng-show="currentUser==null" href="#/register">Register</a></li>
+                <li><a ng-show="currentUser==null" href="#/login">Login</a></li>
+                <li><a ng-show="currentUser!=null" ng-click="model.logout()">Logout</a></li>
+                <li><a ng-show="currentUser!=null" href="">{{currentUser.username}}</a></li>
+                <li><a ng-show="currentUser!=null" href="#/profile">Profile</a></li>
+                <li><a ng-show="(currentUser!=null && admin)"href="#/admin">Admin</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>

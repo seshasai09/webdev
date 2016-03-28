@@ -1,0 +1,166 @@
+
+<div class="col-sm-10" >
+        <h2 id="type">Forms: Registration Forms</h2>
+        <ul class="nav nav-tabs" >
+            <li onclick=changetext(true)><a  href="#/forms">Forms</a></li>
+            <li  class="active" onclick="changetext(false)"><a data-toggle="tab" href="#menu2">Fields</a></li>
+        </ul>
+
+        <div class="tab-content" >
+
+            <div id="menu2" class="tab-pane fade in active" >
+                <div class="col-sm-10 sortable" >
+                  <!--  <table class="table table-responsive table-bordered table-striped">-->
+                        <div ng-repeat="field in model.fields" >
+
+
+                        <div  ng-switch =field.type >
+                            <div  ng-switch-when="TEXT"  >
+                                <div class="form-group ">
+                                <label for="firstname" class="col-sm-10 form-control-label">{{field.label}}</label><br>
+                                <div class="col-sm-9">
+                                    <input type="text" class="form-control" id="firstname" placeholder="{{field.placeholder}}">
+                                </div>
+                                <div class="col-sm-3">
+                                    <span class="glyphicon glyphicon-pencil" aria-hidden="true" ng-click="model.edit($index)"></span>
+                                    <span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="model.add($index)"></span>
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="model.remove($index)"></span>
+                                    <span class="glyphicon glyphicon-align-justify move" aria-hidden="true"></span>
+                                </div>
+
+                            </div>
+                            </div>
+
+                            <div class="animate-switch" ng-switch-when="EMAIL">
+                                <div class="form-group  ">
+                                    <label for="firstname" class="col-sm-10 form-control-label">{{field.label}}</label><br>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="{{field.placeholder}}" placeholder="{{field.placeholder}}">
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true" ng-click="model.edit($index)"></span>
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="model.add($index)"></span>
+                                        <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="model.remove($index)"></span>
+                                        <span class="glyphicon glyphicon-align-justify move" aria-hidden="true"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="animate-switch" ng-switch-when="TEXTAREA">
+                                <div class="form-group  ">
+                                    <label for="firstname" class="col-sm-10 form-control-label">{{field.label}}</label><br>
+                                    <div class="col-sm-9">
+                                        <textarea class="form-control"  placeholder="{{field.placeholder}}"></textarea>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true" ng-click="model.edit($index)"></span>
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="model.add($index)"></span>
+                                        <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="model.remove($index)"></span>
+                                        <span class="glyphicon glyphicon-align-justify move" aria-hidden="true"></span>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="animate-switch" ng-switch-when="DATE">
+                                <div class="form-group  ">
+                                    <label class="col-sm-10 form-control-label">{{field.label}}</label><br>
+                                    <div class="col-sm-9">
+                                        <input type="date" class="form-control" >
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true" ng-click="model.edit($index)"></span>
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="model.add($index)"></span>
+                                        <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="model.remove($index)"></span>
+                                        <span class="glyphicon glyphicon-align-justify move" aria-hidden="true"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="animate-switch" ng-switch-when="OPTIONS">
+                                <div class="form-group  ">
+                                    <label class="col-sm-8 form-control-label">{{field.label}}</label><br>
+                                    <div class="col-sm-9">
+                                        <select  class="col-sm-12" >
+                                            <option ng-repeat="option in field.options" value="{{option.value}}">{{option.label}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true" ng-click="model.edit($index)"></span>
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="model.add($index)"></span>
+                                        <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="model.remove($index)"></span>
+                                        <span class="glyphicon glyphicon-align-justify move" aria-hidden="true"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="animate-switch" ng-switch-when="CHECKBOX">
+                                <div class="form-group ">
+                                    <label class="col-sm-8 form-control-label">{{field.label}}</label><br>
+                                    <div class="col-sm-9" ng-repeat="option in field.options">
+                                        <div> <input type="checkbox" value="{{option.value}}">{{option.label}}</div>
+                                        <br>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true" ng-click="model.edit($index)"></span>
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="model.add($index)"></span>
+                                        <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="model.remove($index)"></span>
+                                        <span class="glyphicon glyphicon-align-justify move" aria-hidden="true"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="animate-switch" ng-switch-when="RADIO">
+                                <div class="form-group">
+                                    <label  class="col-sm-8 form-control-label">{{field.label}}</label><br>
+                                    <div class="col-sm-9" ng-repeat="option in field.options">
+                                        <div> <input type="radio"   value="{{option.value}}">{{option.label}}</div>
+                                        <br>
+                                    </div>
+                                    <div class="col-sm-3">
+                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true" ng-click="model.edit($index)"></span>
+                                        <span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="model.add($index)"></span>
+                                        <span class="glyphicon glyphicon-remove" aria-hidden="true" ng-click="model.remove($index)"></span>
+                                        <span class="glyphicon glyphicon-align-justify move" aria-hidden="true"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        </div>
+                        <!--</table>-->
+
+
+
+
+                        <div class="form-group  ">
+                            <div class="col-sm-10">
+                                <div class="hline"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group  ">
+                            <label for="newfield" class="col-sm-8 form-control-label">Add New Field</label><br>
+                            <div class="col-sm-6">
+                                <select name="fieldType" id="newfield" class="col-sm-12" ng-model="model.fieldType">
+                                    <option value="TEXT">Single Line Text Field</option>
+                                    <option value="TEXTAREA">Multi Line Text Field</option>
+                                    <option value="DATE">Date Field</option>
+                                    <option value="OPTIONS">Drop Down Field</option>
+                                    <option value="CHECKBOX">Checkboxes Field</option>
+                                    <option value="RADIO">Radio Buttons</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true" ng-click="model.addField(model.fieldType)"></span>
+                            </div>
+                        </div>
+
+
+
+
+                </div>
+            </div>
+
+        </div>
+</div>

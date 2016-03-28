@@ -1,0 +1,34 @@
+<div ng-if="model.data">
+<div class="col-sm-10" >
+    <div class="tab-content">
+        <div style="text-align: left"><h2>Artist</h2></div>
+        <div class="col-sm-10" >
+            Search Artist: <input type="text" ng-model="model.artist.name">
+            <input type="button" value="Search" ng-click="search()">
+            <form id="register" name="resister" class="form-horizontal;" >
+
+                <table class="table table-responsive table-bordered ">
+                    <thead>
+                    <td><span ng-click="sortfield='user.username';reverse=!reverse"
+                              class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Artist Name</td>
+                    <td><span ng-click="sortfield='user.password';reverse=!reverse"
+                              class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Artist Url</td>
+                    <td><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Image</td>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="artist in model.artists | orderBy:sortfield:reverse ">
+                        <td><a ng-click="getTracks(artist.name)">{{artist.name}}</a></td>
+                        <td>{{artist.url}}</td>
+                        <td><img ng-src="{{artist.image[3]['#text']}}" ></image></td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
