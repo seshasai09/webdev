@@ -63,6 +63,7 @@ module.exports = function (db) {
 
     }
     function updateUserById(id,user){
+        delete user['_id'];
         // console.log(require("./user.mock.json"));
         return User.findOneAndUpdate({_id:id},
             {$set: user});

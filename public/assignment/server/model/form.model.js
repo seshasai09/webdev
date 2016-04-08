@@ -44,6 +44,7 @@ module.exports=function(){
     }
 
     function updateFormById(id,form){
+        delete form['_id']
         return Form.findOneAndUpdate({_id:id},
             {$set: form});
     }
