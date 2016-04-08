@@ -64,6 +64,7 @@ module.exports = function (db) {
     }
     function updateUserById(id,user){
         var admin=null;
+        console.log()
         delete user['_id'];
         if(user.username==='admin'){
             admin={

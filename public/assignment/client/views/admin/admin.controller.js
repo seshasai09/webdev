@@ -51,6 +51,7 @@
                 })
 
              vm.nuser={};
+             init();
         }
 
         function selectUser(index){
