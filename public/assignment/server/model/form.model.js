@@ -1,4 +1,9 @@
+var mongoose = require('mongoose');
+var q = require("q");
 module.exports=function(){
+
+    var FormSchema = require('./form.schema.server')();
+    var Form = mongoose.model('Form',FormSchema);
 
     var forms = require("./form.mock.json");
     var api ={
@@ -8,56 +13,39 @@ module.exports=function(){
         updateFormById: updateFormById,
         findFormByTitle: findFormByTitle,
         findFieldsForForms: findFieldsForForms,
-        createFieldForForm:createFieldForForm,
-        updateField:updateField,
-        deleteFieldById:deleteFieldById
+        getMongooseModel:getMongooseModel
 
     }
     return api;
 
+    function getMongooseModel() {
+        return Form;
+    }
+
     function createFormForUser(form){
-        form.fields=[];
-        forms.push(form);
-        console.log(forms);
+        var deferred = q.defer();
+
+        Form.create(form,function(err,form){
+            if(!err){
+                deferred.resolve(form);
+            }else{
+                deferred.reject(err);
+            }
+        })
+        return deferred.promise;
     }
 
     function deleteFormById(id){
-
-        var index=0;
-        for( var u in forms){
-
-            if(parseInt(forms[u]._id)==parseInt(id)){
-                break;
-            }
-            index++;
-        }
-        forms.splice(index,1);
-        return null;
-
+        return Form.remove({_id:id});
     }
 
     function findAllFormsForUser(id){
-        var formsbyuser=[];
-        for(var v in forms){
-            if(parseInt(forms[v].userId)==parseInt(id)){
-                formsbyuser.push(forms[v]);
-            }
-        }
-
-        return formsbyuser;
+      return Form.find({userId:id});
     }
 
     function updateFormById(id,form){
-       console.log(form);
-        for( var u in forms){
-            console.log(forms[u]._id+"asda"+id);
-            if(forms[u]._id===id) {
-                forms[u]=form;
-                break;
-            }
-        }
-
-        return null;
+        return Form.findOneAndUpdate({_id:id},
+            {$set: form});
     }
 
     function findFormByTitle(title){
@@ -84,63 +72,11 @@ module.exports=function(){
         return forms[index].fields;
     }
 
-    function createFieldForForm(formId,field){
-        var index=0;
-        for( var u in forms){
-            if(forms[u]._id===formId){
-                break;
-            }
-            index++;
-        }
-        forms[u].fields.push(field);
-        console.log(forms);
-        return null;
-    }
 
-    function updateField(formId,fieldId,field){
-        var index=0;
-        var findex=0;
-        for( var u in forms){
-            if(forms[u]._id===formId){
-                break;
-            }
-            index++;
-        }
 
-        for(var v in forms[index].fields){
-            if(forms[index].fields[v]._id===fieldId){
-                break;
-            }
-            findex++;
-        }
-        forms[u].fields[findex]=field;
-        return null;
-    }
 
-    function deleteFieldById(formId,fieldId){
 
-        var index=0;
-        var findex=0;
-        for( var u in forms){
-            if(forms[u]._id===formId){
-                break;
-            }
-            index++;
-        }
 
-        for(var v in forms[index].fields){
-            if(forms[index].fields[v]._id===fieldId){
-                break;
-            }
-            findex++;
-        }
-
-        forms[index].fields.splice(findex,1);
-        console.log("deleting field");
-        console.log(forms[index].fields);
-        return null;
-
-    }
 
 
 }

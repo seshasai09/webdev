@@ -1,5 +1,9 @@
+var mongoose = require('mongoose');
 var q = require("q");
-module.exports = function () {
+module.exports = function (db) {
+
+    var UserSchema = require('./user.schema.server.js')();
+    var User = mongoose.model('User',UserSchema);
 
     var mock = require("./user.mock.json");
     var currentUser=null;
@@ -20,65 +24,50 @@ module.exports = function () {
     function findUserByCredentials(user){
         console.log("in model of server "+user);
         // console.log(require("./user.mock.json"));
-        for( var u in mock){
-            if(mock[u].username===user.username && mock[u].password===user.password) {
-                return mock[u];
-            }
-        }
-        return null;
+       var deferred = q.defer();
 
+        User.findOne({username: user.username,
+                        password:user.password}, function(err,user){
+            if(!err){
+                deferred.resolve(user);
+            }else{
+                deferred.reject(err);
+            }
+
+        });
+        return deferred.promise;
     }
 
     function findUserByUsername(uName){
-        console.log("in model of find user by user name "+uName);
-        // console.log(require("./user.mock.json"));
-        for( var u in mock){
-            if(mock[u].username===uName ) {
-                console.log(mock[u]);
-                return mock[u];
-            }
-        }
-        return null;
+       return User.findOne({username:uName});
 
     }
     function findAllUsers(){
-        console.log("fetching all user");
-        return mock;
+        return User.find();
 
     }
     function createUser(user){
-        mock.push(user);
+        var deferred = q.defer();
+
+        User.create(user,function(err,user){
+            if(!err){
+                deferred.resolve(user);
+            }else{
+                deferred.reject(err);
+            }
+        })
+        return deferred.promise;
     }
     function deleteUserById(id){
-        console.log("in model of server "+id);
-        // console.log(require("./user.mock.json"));
-        var index=0;
-        for( var u in mock){
-            if(parseInt(mock[u]._id)==parseInt(id)) {
-                break;
-            }
-            index++;
-        }
-        console.log("index is "+index);
-        mock.splice(index,1);
-       console.log(mock);
-        return null;
+        return User.remove({_id:id});
 
     }
     function updateUserById(id,user){
-        console.log("in model of server "+user);
         // console.log(require("./user.mock.json"));
-        var index=0;
-        for( var u in mock){
-            if(parseInt(mock[u]._id)==parseInt(id)) {
-                break;
-            }
-            index++;
-        }
-        mock[index]=user;
-        return mock;
-
+        return User.findOneAndUpdate({_id:id},
+            {$set: user});
     }
+
     function findUserById(id){
         console.log("in model of server "+id);
         // console.log(require("./user.mock.json"));

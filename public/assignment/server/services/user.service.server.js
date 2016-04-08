@@ -16,11 +16,17 @@ module.exports=function(app,model){
 
     function login(req,res){
         var user = req.body;
-          var user=model.findUserByCredentials(user);
-        req.session.currentUser=user;
-        console.log("setting user in session");
-        console.log(req.session.currentUser);
-        res.json(user);
+
+        model.findUserByCredentials(user)
+            .then(function(user){
+                req.session.currentUser=user;
+                res.json(user);
+            },function(err){
+                if(err){
+                    res.status(400).send(err);
+                }
+            });
+
     }
 
     function checkLoggedin(req,res){
@@ -34,8 +40,16 @@ module.exports=function(app,model){
     function findUserByUsername(req,res){
         var uName= req.params["username"];
         console.log(uName);
-        var user = model.findUserByUsername(uName);
-        res.json(user);
+        var user =
+            model.findUserByUsername(uName)
+                .then(function(user){
+                    console.log("user by username is");
+                    console.log(user);
+                    res.json(user);
+                },function(err){
+                    res.status(400).send(err);
+                });
+
     }
 
     function  logout(req,res){
@@ -44,13 +58,18 @@ module.exports=function(app,model){
     }
 
     function addNewUser(req,res){
-        console.log("new user id is");
-      //  var myUuid = uuid.noConflict();
-       // console.log(uuid.v1());
+
         var user=req.body;
-        user._id=uuid.v1();
-        model.createUser(user);
-        res.send(200);
+       // user._id=uuid.v1();
+        model.createUser(user)
+            .then(function(user){
+                req.session.currentUser=user;
+                res.json(user);
+            },function(err){
+                if(err){
+                    res.status(400).send(err);
+                }
+            });
     }
 
     function findUserById(req,res){
@@ -64,8 +83,13 @@ module.exports=function(app,model){
     }
 
     function findAllUsers(req,res){
-        var users = model.findAllUsers();
-        res.json(users);
+         model.findAllUsers().
+         then(function(users){
+             res.json(users);
+         },function(err){
+             res.status(400).send(err);
+         });
+
 
     }
 
@@ -77,21 +101,26 @@ module.exports=function(app,model){
     }*/
 
     function updateUser(req,res){
-        console.log("updating user");
+
         var id = req.params["id"];
         var user = req.body;
-        console.log(id);
-        console.log(user);
+        var users= model.updateUserById(id,user)
+            .then(function(users){
+                req.session.currentUser=users;
+                res.json(users);
+            },function(err){
+                res.status(400).send(err);
+            })
 
-        var users= model.updateUserById(id,user);
-        req.session.currentUser=model.findUserByUsername(uName.username);
-        res.json(users);
     }
 
     function deleteUserById(req,res){
         var id = req.params["id"];
         console.log("the id is"+id);
-        model.deleteUserById(id);
-        res.send(200);
+        model.deleteUserById(id)
+            .then(function(){
+                res.send(200);
+            });
+
     }
 }

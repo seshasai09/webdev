@@ -8,10 +8,15 @@
             getFieldsForForm: getFieldsForForm,
             getFieldForForm: getFieldForForm,
             deleteFieldFromForm: deleteFieldFromForm,
-            updateField: updateField
+            updateField: updateField,
+            sortField:sortField
         };
 
         return api;
+
+        function sortField(formId, startIndex, endIndex) {
+            return $http.put("/api/assignment/form/"+formId+"/field?startIndex="+startIndex+"&endIndex="+endIndex);
+        }
 
         function createFieldForForm(formId, field) {
             return $http.post("/api/assignment/form/"+formId+"/field",field);
@@ -26,9 +31,6 @@
         }
 
         function deleteFieldFromForm(formId, fieldId) {
-            console.log("delete the field");
-            console.log(formId);
-            console.log(fieldId);
             return $http.delete("/api/assignment/form/"+formId+"/field/"+fieldId);
           //  app.delete("/api/assignment/form/:formId/field/:fieldId",deleteFieldById);
         }

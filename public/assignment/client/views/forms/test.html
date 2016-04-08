@@ -53,8 +53,8 @@
                     <label  class="col-sm-10 form-control-label">Label</label><br>
                     <input ng-model="model.field.label" type="text">
                     <label class="col-sm-10 form-control-label">Options</label><br>
-                    <textarea ng-repeat="option in model.field.options" >
-                        test{{option.label}}:{{option.value}}
+                     <textarea ng-model='model.options'>
+
                     </textarea>
                 </div>
             </div>
@@ -70,7 +70,7 @@
                     <label  class="col-sm-10 form-control-label">Label</label><br>
                     <input ng-model="model.field.label" type="text">
                     <label class="col-sm-10 form-control-label">Options</label><br>
-                     <textarea ng-model='model.field.options'>
+                     <textarea ng-model='model.options'>
 
                     </textarea>
                 </div>
@@ -87,7 +87,9 @@
                     <label  class="col-sm-10 form-control-label">Label</label><br>
                     <input ng-model="model.field.label" type="text">
                     <label class="col-sm-10 form-control-label">Options</label><br>
-                    <textarea ng-model="model.field.options"></textarea>
+                     <textarea ng-model='model.options'>
+
+                    </textarea>
                 </div>
             </div>
         </div>

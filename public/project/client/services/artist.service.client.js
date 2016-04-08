@@ -2,7 +2,7 @@
     angular.module('MSocialApp')
         .factory('ArtistService',ArtistService);
 
-    function ArtistService(){
+    function ArtistService($http){
         var currentArtist=null;
 
 
@@ -22,8 +22,11 @@
         init();
 
         function search(name){
-           return  $http.get("http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=" +name+
-                    "&api_key=1729cba71b947f46d5ec13e677950777&format=json");
+          /* return  $http.get("http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=" +name+
+                    "&api_key=1729cba71b947f46d5ec13e677950777&format=json");*/
+
+            https://api.spotify.com/v1/search?q=tania%20bowra&type=artist
+            return $http.get("https://api.spotify.com/v1/search?q="+name+"&type=artist");
 
         }
 

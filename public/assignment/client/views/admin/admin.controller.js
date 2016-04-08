@@ -18,6 +18,7 @@
         function findAllUsers() {
             UserService.findAllUsers()
                 .then(function (response) {
+                    vm.nuser={};
                     vm.users = response.data;
                 });
         }

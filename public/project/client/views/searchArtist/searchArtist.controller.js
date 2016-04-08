@@ -12,7 +12,9 @@
             console.log(vm.artist.name);
             ArtistService.search(vm.artist.name)
                  .then(function (response) {
-                     vm.artists = response.data.results.artistmatches.artist;
+                     console.log(response.data);
+                  //   vm.artists = response.data.results.artistmatches.artist;
+                     vm.artists = response.data.artists.items;
                  });
 
         }

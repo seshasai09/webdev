@@ -1,10 +1,10 @@
-<div ng-if="model.data">
+<!--<div ng-if="model.data">-->
 <div class="col-sm-10" >
     <div class="tab-content">
         <div style="text-align: left"><h2>Artist</h2></div>
         <div class="col-sm-10" >
             Search Artist: <input type="text" ng-model="model.artist.name">
-            <input type="button" value="Search" ng-click="search()">
+            <input type="button" value="Search" ng-click="model.search()">
             <form id="register" name="resister" class="form-horizontal;" >
 
                 <table class="table table-responsive table-bordered ">
@@ -18,8 +18,9 @@
                     <tbody>
                     <tr ng-repeat="artist in model.artists | orderBy:sortfield:reverse ">
                         <td><a ng-click="getTracks(artist.name)">{{artist.name}}</a></td>
-                        <td>{{artist.url}}</td>
-                        <td><img ng-src="{{artist.image[3]['#text']}}" ></image></td>
+                        <td>{{artist.href}}</td>
+                        <!--<td><img ng-src="{{artist.images[2]['#text']}}" ></image></td>-->
+                        <td><img ng-src="{{artist.images[1].url}}" ></image></td>
                         </tr>
 
 
@@ -30,5 +31,5 @@
         </div>
     </div>
 </div>
-</div>
+<!--</div>-->
 

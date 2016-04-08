@@ -8,9 +8,9 @@
         var vm = this;
        function init(){
            var currentUser = UserService.getCurrentUser();
-           if(currentUser!=null){
+          /* if(currentUser==null){
                $location.url("/login")
-           }
+           }*/
        }
         return init();
         console.log($scope.nuser);

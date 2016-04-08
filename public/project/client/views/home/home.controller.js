@@ -8,6 +8,7 @@
     function homecontroller(){
         //console.log(UserService.getCurrentUser());
         //$scope.user=UserService.getCurrentUser().firstName;
+
     }
 
 

@@ -112,6 +112,7 @@
                     .then(function(response){
                         var currentUser= response.data;
                             console.log("user logged in");
+                        console.log(currentUser);
                             UserService.setCurrentUser(currentUser);
                         deferred.resolve();//manage the promise bt resolving it
                         console.log("deferred object");

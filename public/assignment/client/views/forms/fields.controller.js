@@ -9,15 +9,15 @@
         vm.edit=edit;
         vm.add=add;
         vm.remove=remove;
+        vm.sortField=sortField;
    //     vm.sort=sort;
         init();
 
         function init(){
             var formId =$routeParams.formId;
-            console.log("formId"+formId);
+            vm.fieldType=" ";
             FieldService.getFieldsForForm(formId)
                 .then(function(response){
-                    console.log(response.data);
                     vm.fields = response.data;
                 });
         }
@@ -26,27 +26,23 @@
             var field={};
             switch(type){
                 case "TEXT": field={
-                    _id:null,
                     label:"New Text Field",
                     type: "TEXT",
                     placeholder: "New Field"
                 };
                     break;
                 case "TEXTAREA": field={
-                    _id:null,
-                    label:"New Text Field",
+                    label:"New TextArea Field",
                     type: "TEXTAREA",
                     placeholder: "New Field"
                 };
                     break;
                 case "DATE": field={
-                    _id:null,
                     label:"New Date Field",
                     type: "DATE"
                 };
                     break;
                 case "OPTIONS": field={
-                    _id:null,
                     label:"New Dropdown",
                     type: "OPTIONS",
                     options: [
@@ -57,7 +53,6 @@
                 };
                     break;
                 case "CHECKBOX": field={
-                    _id:null,
                     label:"New Checkboxes",
                     type: "CHECKBOX",
                     options: [
@@ -68,7 +63,6 @@
                 };
                     break;
                 case "RADIO": field={
-                    _id:null,
                     label:"New Radio Buttons",
                     type: "RADIO",
                     options: [
@@ -80,6 +74,7 @@
                     break;
             }
             var formId =$routeParams.formId;
+            console.log(field);
             FieldService.createFieldForForm(formId,field)
                 .then(function(response){
                     init();
@@ -90,7 +85,6 @@
             var formId =$routeParams.formId;
             console.log("in edit");
         var type = vm.fields[fieldIndex].type;
-            console.log(type);
                 var modalInstance = $modal.open({
                     templateUrl: "views/forms/test.html",
                     controller:'PopupInstanceController',
@@ -102,9 +96,6 @@
                             }
                     }
                 });
-            console.log("filed index"+fieldIndex);
-            console.log(vm.fields[fieldIndex]);
-
 
            modalInstance.result.then(function(result){
                var field=null;
@@ -112,39 +103,21 @@
                    vm.fields[fieldIndex].label = result.label;
                    var data=[];
                    var temp=null;
-                   for(u in result.options){
-                      temp = result.options[u];
-                       var res = temp.split(":");
-                       var obj ={
-                           label:res[0],
-                           value:res[1]
-                       }
-                       data.push(obj);
-                   }
-                   vm.fields[fieldIndex].options=data;
+                   vm.fields[fieldIndex].options=result.options;
 
                }else if(type=="TEXT"||type=="TEXTAREA") {
                    vm.fields[fieldIndex].label = result.label;
                    vm.fields[fieldIndex].placeholder = result.placeholder;
-                   console.log(result);
-                   console.log( vm.fields[fieldIndex]);
                }else{
                    vm.fields[fieldIndex].label = result.label;
                }
                field= vm.fields[fieldIndex];
-               console.log(vm.fields[fieldIndex]);
+               console.log(field);
                FieldService.updateField(formId,vm.fields[fieldIndex]._id,field)
                    .then(function(response){
                        init();
                    });
            });
-          /* field= vm.fields[fieldIndex];
-            console.log("in controller before calling field update");
-            console.log(field);
-            console.log(formId);
-            console.log(vm.fields[fieldIndex]._id);*/
-
-
 
         }
 
@@ -153,8 +126,6 @@
           //  console.log("in edit");
             var field = {};
             field=vm.fields[fieldIndex];
-
-
 
             FieldService.createFieldForForm(formId,field)
                 .then(function(response){
@@ -176,18 +147,26 @@
             return $http.get();
         }
 
-        setTimeout(function(){
+       /* setTimeout(function(){
             $(".sortable").sortable({
                 connectWith: ".sortable",
                 handle: ".move",
             }).disableSelection();
-        });
+        });*/
 
-       /* function sort(){
-            console.log("in sort");
-            $( "#sortable" ).sortable();
-        //    $( "#sortable" ).disableSelection();
-        }*/
+        function sortField(start,end){
+            console.log("in sorting");
+            FieldService
+                .sortField($routeParams.formId,start,end)
+                .then(
+                    function (response) {
+                    },
+                    function (err) {
+                        vm.error = err;
+                        console.log(err);
+                    }
+                );
+                }
 
     }
 

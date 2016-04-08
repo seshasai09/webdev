@@ -1,4 +1,4 @@
 (function(){
-    angular.module('FormBuilderApp',['ngRoute','ui.bootstrap']);
+    angular.module('FormBuilderApp',['ngRoute','ui.bootstrap','jgaDirectives']);
 })();
 

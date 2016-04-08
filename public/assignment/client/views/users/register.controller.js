@@ -10,13 +10,11 @@
         function register(){
             var user={username:vm.user.username,
                 password: vm.user.password,
-                email: vm.user.email,
+                email: vm.user.email.split(','),
                 roles:[]};
             UserService.createUser(user)
                 .then(function(response){
                 UserService.setCurrentUser(user);
-                    console.log("getting current user");
-                    console.log(UserService.getCurrentUser());
                 $location.path('/profile');
             });
 
