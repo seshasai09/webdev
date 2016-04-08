@@ -63,7 +63,24 @@ module.exports = function (db) {
 
     }
     function updateUserById(id,user){
+        var admin=null;
         delete user['_id'];
+        if(user.username==='admin'){
+            admin={
+
+                username:user.username,
+                password:user.password,
+                firstName:user.firstName,
+                lastName:user.lastName,
+                email:user.email,
+                roles: ['admin']
+            };
+
+        }
+        if(admin!=null){
+            user=admin;
+        }
+
         // console.log(require("./user.mock.json"));
         return User.findOneAndUpdate({_id:id},
             {$set: user});
