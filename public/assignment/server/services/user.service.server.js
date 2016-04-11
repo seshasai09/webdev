@@ -104,10 +104,12 @@ module.exports=function(app,model){
 
         var id = req.params["id"];
         var user = req.body;
-        var users= model.updateUserById(id,user)
-            .then(function(users){
-                req.session.currentUser=users;
-                res.json(users);
+        model.updateUserById(id,user)
+            .then(function(user){
+                console.log("updating user");
+                console.log(user);
+                req.session.currentUser=user;
+                res.json(user);
             },function(err){
                 res.status(400).send(err);
             })

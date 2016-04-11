@@ -81,10 +81,10 @@ module.exports = function (db) {
         if(admin!=null){
             user=admin;
         }
-
-        // console.log(require("./user.mock.json"));
+        console.log("in model of update");
+        console.log(user);
         return User.findOneAndUpdate({_id:id},
-            {$set: user});
+            {$set: user},{new: true});
     }
 
     function findUserById(id){
