@@ -1,5 +1,8 @@
 var mongoose = require('mongoose');
 module.exports = function(){
+    var PostSchema = require('../post/post.schema.server.js')();
+    var SongSchema = require('../songs/song.schema.server.js')();
+    var DiscussionSchema = require('../discussion/discussion.schema.server.js')();
     var ArtistSchema = mongoose.Schema({
         name:String,
         spotifyId: String,

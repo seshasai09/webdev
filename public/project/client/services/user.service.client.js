@@ -16,14 +16,15 @@
 
     function UserService($http,$rootScope){
         var api={
-            findUserByCredentials: findUserByCredentials,
+            login: login,
             findAllUsers: findAllUsers,
             createUser: createUser,
             deleteUserById: deleteUserById,
             updateUser: updateUser,
             getCurrentUser: getCurrentUser,
             setCurrentUser:setCurrentUser,
-            logout: logout
+            logout: logout,
+            post:post
         };
         return api;
         var currentuser=null;
@@ -41,21 +42,11 @@
 
         }
 
-        function findUserByCredentials(user, callback){
+        function login(user, callback){
             console.log("in user service"+user);
-         //   console.log(users);
-         ///   for(var u in users)
-           /* {
-                console.log(users[u]);
-                if(users[u].username == user.username && users[u].password==user.password)
-                {
-                    console.log(users[u]);
-                    currentuser=users[u];
-                    callback(users[u]);
-                }
-            }*/
-          //  return null;
-            return $http.post("/api/project/login",user);
+
+           // return $http.post("/api/project/login",user);
+            return $http.post("/api/project/artist/login",user);
 
         }
         function findAllUsers(callback){
@@ -64,7 +55,7 @@
 
         }
         function createUser(user){
-            return http.post("/api/project/register",user);
+            return $http.post("/api/project/register",user);
             //users.push(user);
             //callback(users);
         }
@@ -100,6 +91,12 @@
                 }
             }
             callback(user);
+        }
+
+
+        function  post(userid,post){
+            console.log(post);
+            return $http.post('/api/project/artist/post/'+userid+'',post);
         }
 
     }

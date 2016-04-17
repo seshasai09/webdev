@@ -13,7 +13,7 @@
 
         init();
 
-        function regiter() {
+        function register() {
             var user = {
                 username: vm.user.username,
                 password: vm.user.password,

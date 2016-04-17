@@ -28,7 +28,9 @@
             var nuser={
                 username:vm.nuser.username,
                 password:vm.nuser.password,
-                roles: vm.nuser.roles.split("|")};
+                firstName:vm.nuser.firstName,
+                lastName:vm.nuser.lastName,
+                roles: vm.nuser.roles.split(",")};
             UserService.createUser(nuser)
                 .then( function(response) {
                     findAllUsers();
@@ -41,17 +43,22 @@
                 var u_user={
                 _id:vm.nuser._id,
                 username:vm.nuser.username,
-                password:vm.nuser.password,
+             //   password:vm.nuser.password,
+                firstName:vm.nuser.firstName,
+                lastName:vm.nuser.lastName,
                 roles: vm.nuser.roles
             };
+             if(vm.nuser.password!=null){
+                 u_user.password=vm.nuser.password;
+             }
 
-            UserService.updateUser(u_user._id, u_user)
+            UserService.updateUserByAdmin(u_user._id, u_user)
                 .then(function(response){
                     vm.users = response.data;
                 })
 
              vm.nuser={};
-             init();
+          //   init();
         }
 
         function selectUser(index){
@@ -59,7 +66,9 @@
 
             vm.nuser = {_id:vm.users[index]._id,
                 username:vm.users[index].username,
-                password:vm.users[index].password,
+             //   password:vm.users[index].password,
+                firstName:vm.users[index].firstName,
+                lastName:vm.users[index].lastName,
                 roles: vm.users[index].roles};
         }
 

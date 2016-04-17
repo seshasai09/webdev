@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-moule.exports = function(){
+module.exports = function(){
     var Song_CommentsSchema = mongoose.Schema({
         content:String,
         createddate:{

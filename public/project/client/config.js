@@ -26,6 +26,16 @@
                         // is looged in
                     }
                 })
+                .when('/artistProfile',{
+                    templateUrl: "views/artist/artist.profile.view.html",
+                    controller: "ArtistProfileController",
+                    controllerAs: "model",
+                    resolve: { // when user wants to go to profile page we check if user is loged in
+                        checkLoggedIn: checkLoggedIn // this function is asking to be resolved/reject
+                        // we are configuring dependecies. Angular allows us to do. So before going to profile page we check if user
+                        // is looged in
+                    }
+                })
                 .when('/admin',{
                     templateUrl: "views/admin/admin.view.html",
                     controller: "AdminController",

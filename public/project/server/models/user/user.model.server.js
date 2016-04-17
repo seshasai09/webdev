@@ -1,4 +1,9 @@
-module.exports = function(){
+var mongoose = require('mongoose');
+var q = require("q");
+module.exports = function(db){
+
+    var UserProjectSchema = require("./user.schema.server.js")();
+    var User = mongoose.model('UserProject',UserProjectSchema);
     var mock= require("./user.mock.json"); // local instance to refrence the data
     var api= {
         findUserByCredentials: findUserByCredentials,
@@ -8,20 +13,19 @@ module.exports = function(){
     return api;
 
     function findUserByCredentials(user){
-
-        console.log("in model of server "+user);
-       // console.log(require("./user.mock.json"));
-        for( var u in mock){
-            if(mock[u].username===user.username && mock[u].password==user.password) {
-                return mock[u];
-            }
-        }
-        return null;
+        return User.findOne({username:user.username,password:user.password});
     }
 
     function createUser(user){
-        user._id = "ID_"+(new Date()).getTime();
-        mock.push(user);
-        return user;
+        var deferred = q.defer();
+
+        User.create(user,function(err,user){
+            if(!err){
+                deferred.resolve(user);
+            }else{
+                deferred.reject(err);
+            }
+        })
+        return deferred.promise;
     }
 }

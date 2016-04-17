@@ -39,6 +39,8 @@ module.exports = function (db) {
     }
 
     function findUserByUsername(uName){
+        console.log("user name is");
+        console.log(uName);
        return User.findOne({username:uName});
 
     }
@@ -66,7 +68,7 @@ module.exports = function (db) {
         var admin=null;
         console.log()
         delete user['_id'];
-        if(user.username==='admin'){
+        if(user.username==='seshasai'){
             admin={
 
                 username:user.username,
@@ -88,15 +90,8 @@ module.exports = function (db) {
     }
 
     function findUserById(id){
-        console.log("in model of server "+id);
-        // console.log(require("./user.mock.json"));
-        for( var u in mock){
-            console.log((mock[u]));
-            if(parseInt(mock[u]._id)==parseInt(id)) {
-                return mock[u];
-            }
-        }
-        return null;
+
+        return User.findOne({_id:id});
 
     }
     function getCurrentUser(){

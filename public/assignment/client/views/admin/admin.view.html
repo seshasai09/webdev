@@ -2,7 +2,7 @@
 <div class="col-sm-10" >
 <div class="tab-content">
 <div style="text-align: left"><h2>Admin</h2></div>
-<div class="col-sm-10" >
+<div class="col-sm-12" >
     <form id="register" name="resister" class="form-horizontal;" >
 
    <table class="table table-responsive table-bordered table-striped">
@@ -11,25 +11,33 @@
                  class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Username</td>
        <td><span ng-click="sortfield='user.password';reverse=!reverse"
                class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Password</td>
+       <td><span ng-click="sortfield='user.username';reverse=!reverse"
+                 class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>First Name</td>
+       <td><span ng-click="sortfield='user.username';reverse=!reverse"
+                 class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Last Name</td>
        <td><span
                  class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Role</td>
        <td><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Action</td>
        <tr><td><input ng-model="model.nuser.username" type="text" placeholder="username"></td>
            <td><input ng-model="model.nuser.password" type="password" placeholder="password"></td>
+           <td><input ng-model="model.nuser.firstName" type="text" placeholder="First Name"></td>
+           <td><input ng-model="model.nuser.lastName" type="test" placeholder="Last Name"></td>
            <td><input ng-model="model.nuser.roles" type="text" placeholder="role1|role2"></td>
            <td>
-               <span class="glyphicon glyphicon-plus" ng-click="model.addUser()" aria-hidden="true"></span>
-               <span class="glyphicon glyphicon-ok" ng-click="model.updateUser()" aria-hidden="true"></span>
+               <span title="Add New User" class="glyphicon glyphicon-plus" ng-click="model.addUser()" aria-hidden="true"></span>
+               <span title="Update User Details" class="glyphicon glyphicon-ok" ng-click="model.updateUser()" aria-hidden="true"></span>
            </td></tr>
        </thead>
        <tbody>
        <tr ng-repeat="user in model.users | orderBy:sortfield:reverse ">
            <td>{{user.username}}</td>
-           <td> <input type="password" ng-model="user.password" readonly></td>
+           <td> <!--<input type="password" ng-model="user.password" readonly>--></td>
+           <td>{{user.firstName}}</td>
+           <td>{{user.lastName}}</td>
            <td>{{user.roles.join().replace(',','|')}}</td>
            <td>
-               <span class="glyphicon glyphicon-remove" ng-click="model.deleteUser($index)" aria-hidden="true"></span>
-               <span class="glyphicon glyphicon-pencil" ng-click="model.selectUser($index)" aria-hidden="true"></span>
+               <span title="Delete User" class="glyphicon glyphicon-remove" ng-click="model.deleteUser($index)" aria-hidden="true"></span>
+               <span title="Select User to Update" class="glyphicon glyphicon-pencil" ng-click="model.selectUser($index)" aria-hidden="true"></span>
            </td></tr>
 
 

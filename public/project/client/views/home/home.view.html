@@ -15,9 +15,21 @@ odio euismod sit amet. Quisque laoreet sem sit amet orci ullamcorper at
 ultricies metus viverra. Pellentesque arcu mauris, malesuada quis
 ornare accumsan, blandit sed diam.
 </div>-->
-   <div>
+  <!-- <div ng-show="user.type == 'artist">-->
+       <div>
+           <input  class="" size="75"type="text" ng-model="model.post.data">
+           <button class=" btn-info" ng-click="model.post()">Post</button>
+       </div>
+  <!-- </div>-->
+<div>&nbsp</div>
+    <div ng-repeat="post in model.posts">
+       <!-- <div><input size="100" type="text" readonly ng-model="post.content"></div>-->
+        <div >
+            <textarea readonly cols="75">{{post.content}}</textarea></div>
+            {{post.like}}<i class="fa fa-thumbs-o-up fa-2x" aria-hidden="true" ng-click="model.likePost(post._id)"></i>
+            <i class="fa fa-times fa-2x" aria-hidden="true" ng-click="model.deletePost(post._id)"></i>
 
-        This is the wall .data will be displayed here
-   </div>
+
+    </div>
 
 </div>

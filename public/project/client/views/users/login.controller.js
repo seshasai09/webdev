@@ -7,7 +7,7 @@
 
         function  login(){
             console.log("using vm test "+vm.user.username,vm.user.password);
-            UserService.findUserByCredentials({username: vm.user.username,password:vm.user.password})
+            UserService.login({username: vm.user.username,password:vm.user.password})
                 .then(function(response){
                     console.log("printing response data "+response.data)
                     if(response.data) {

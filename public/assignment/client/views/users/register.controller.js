@@ -12,7 +12,7 @@
                 password: vm.user.password,
                 email: vm.user.email.split(','),
                 roles:[]};
-            UserService.createUser(user)
+            UserService.register(user)
                 .then(function(response){
                 UserService.setCurrentUser(user);
                 $location.path('/profile');

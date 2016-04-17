@@ -19,7 +19,9 @@
             isAdmin: isAdmin,
             setCurrentUser:setCurrentUser,
             findUserByName:findUserByName,
-            getLoggedInUser:getLoggedInUser
+            getLoggedInUser:getLoggedInUser,
+            updateUserByAdmin:updateUserByAdmin,
+            register:register
 
         }
 
@@ -35,7 +37,7 @@
 
         function getCurrentUser(){
         //    return $rootScope.currentUser;
-            return $http.get("/api/assignment/checkLoggedin");
+            return $http.get("/api/assignment/loggedin");
         }
 
         function setCurrentUser(user){
@@ -50,7 +52,7 @@
         function logout(){
             $rootScope.currentUser=null;
             $rootScope.admin=false;
-            return $http.get("/api/assignment/logout");
+            return $http.post("/api/assignment/logout");
         }
 
         function findUserByUsername(userName){
@@ -66,19 +68,25 @@
 
         }
         function findAllUsers(){
-            return $http.get("/api/assignment/user");
+            return $http.get("/api/assignment/admin/user");
         }
         function createUser(user){
+            return $http.post("/api/assignment/admin/user",user);
+        }
+
+        function register(user){
             console.log("creating the user");
             return $http.post("/api/assignment/user",user);
         }
-
         function deleteUserById(userId){
             console.log(userId);
-            return $http.delete("/api/assignment/user/"+userId+"");
+            return $http.delete("/api/assignment/admin/user/"+userId+"");
         }
         function updateUser(userId, user){
             return $http.put("/api/assignment/user/"+userId+"",user);
+        }
+        function updateUserByAdmin(userId, user){
+            return $http.put("/api/assignment/admin/user/"+userId+"",user);
         }
 
         function findUserByName(name){

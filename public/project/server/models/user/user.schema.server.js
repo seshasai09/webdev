@@ -1,7 +1,10 @@
 var mongoose = require('mongoose');
 
 module.exports = function(){
-    var UserSchema= mongoose.Schema({
+
+    var ArtistSchema = require('../artist/artist.schema.server.js')();
+    var DiscussionSchema = require('../discussion/discussion.schema.server')();
+    var UserProjectSchema= mongoose.Schema({
         username: String,
         password: String,
         firstName: String,
@@ -11,6 +14,6 @@ module.exports = function(){
         follows:[ArtistSchema],
         discussions:[DiscussionSchema]
 
-    },{collection:'user'});
-return UserSchema;
+    },{collection:'userProject'});
+return UserProjectSchema;
 };

@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 
 
 module.exports = function(){
+    var Discussion_CommentsSchema = require('./discussion_comments.schema')();
   var DiscussionSchema = mongoose.Schema({
       name: String,
       description:String,

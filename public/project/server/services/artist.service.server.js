@@ -1,13 +1,12 @@
 // this file is mirror image of user service in client
 module.exports=function(app,model){
-    app.post("/api/project/login",login);
-    app.get("/api/project/isLoggedin",isLoggedin);
-    app.post("/api/project/logout",logout);
-    app.post("/api/project/register",register);
+    app.post("/api/project/artist/login",login);
+    app.get("/api/project/artist/isLoggedin",isLoggedin);
+  //  app.post("/api/project/register",register);
 
     function login(req,res){
         var user = req.body;
-      //  console.log("in server"+req)
+        //  console.log("in server"+req)
         //console.log("in server user is "+user);
         model.findUserByCredentials(user)
             .then(function(user){
@@ -19,7 +18,7 @@ module.exports=function(app,model){
                 res.status(400);
             })// data model manipulates the data
 
-       // res.send(200);
+        // res.send(200);
 
     }
 
@@ -45,4 +44,6 @@ module.exports=function(app,model){
             })
 
     }
+
+
 }
