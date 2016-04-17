@@ -1,17 +1,17 @@
-<div class="row no-gutter col-sm-2">
-    <div class="table-responsive  nopadding">
+<div class="row no-gutter col-sm-1 col-xs-1">
+    <div class="table-responsive  nopadding col-xs col-sm col-md col-lg">
         <table  class="table table-bordered table-striped " border="solid" style="float: left; empty-cells: show"  >
             <tr>
-                <td><a href="#/home">Home</a></td>
+                <td><a href="#/home"><button class="btn btn-info">Home</button></a></td>
             </tr>
             <tr ng-show="currentUser!=null">
-                <td><a  href="#/profile">Profile</a></td>
+                <td><a  href="#/profile"><button class="btn btn-info">Profile</button></a></td>
             </tr>
             <tr ng-show="(currentUser!=null && admin)">
-                <td><a  href="#/admin">Admin</a></td>
+                <td><a  href="#/admin"><button class="btn btn-info">Admin</button></a></td>
             </tr>
             <tr ng-show="currentUser!=null" >
-                <td><a href="#/forms"> Forms </a></td>
+               <td><a href="#/forms"> <button class="btn btn-info"> Forms </button> </a></td>
             </tr>
             <tr height="300px">
                 <td>&nbsp</td>

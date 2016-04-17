@@ -68,7 +68,7 @@ module.exports = function (db) {
         var admin=null;
         console.log()
         delete user['_id'];
-        if(user.username==='seshasai'){
+        if(user.username==='admin'){
             admin={
 
                 username:user.username,
