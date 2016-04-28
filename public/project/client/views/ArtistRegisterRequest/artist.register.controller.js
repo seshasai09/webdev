@@ -12,6 +12,7 @@
         console.log(vm.artistName);
         ArtistService.artistRequest(vm.artistName)
             .then(function(response){
+                vm.artistName="";
                 vm.status="Your Request has been sent";
             });
     }
