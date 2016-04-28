@@ -23,7 +23,7 @@
         <td>   Discussion Title        </td>
         <td>  Discussion Discussion     </td>
         <td>     Created Date      </td>
-        <td>    Delete Discussion    </td>
+        <!--<td>    Delete Discussion    </td>-->
         </thead>
         <tbody>
         <tr ng-repeat="discussion in model.discussions">
@@ -31,7 +31,7 @@
             <td><a  ng-click="model.navigate(discussion._id,discussion.createdby)">{{discussion.name}}</a></td>
             <td>{{discussion.description}}</td>
             <td>{{discussion.createddate}}</td>
-           <td> <button ng-click="model.deleteDiscussion(discussion._id)">Delete</button></td>
+          <!-- <td> <button ng-click="model.deleteDiscussion(discussion._id)">Delete</button></td>-->
         </tr>
 
 
