@@ -9,7 +9,9 @@
             console.log(vm.user.username,vm.user.password);
             $scope.currentUser = UserService.findUserByCredentials(vm.user.username,vm.user.password)
                 .then(function(response){
-                    console.log("printing response data "+response.data)
+                    console.log("printing response data "+response.data);
+                    console.log(response)
+
                     if(response.data) {
                         UserService.setCurrentUser(response.data);
                         console.log(UserService.getCurrentUser());

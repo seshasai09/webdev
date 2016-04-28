@@ -3,7 +3,7 @@ var passport         = require('passport');
 var LocalStrategy    = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 module.exports=function(app,model){
-    app.post("/api/project/login",passport.authenticate('local'),login);
+    app.post("/api/project/login",passport.authenticate('alocal'),login);
     app.get("/api/project/isLoggedin",isLoggedin);
     app.post("/api/project/logout",logout);
     app.post("/api/project/register",register);
@@ -31,7 +31,7 @@ module.exports=function(app,model){
        // callbackURL     : "/auth/facebook/callback"
     };
 
-    passport.use('local',new LocalStrategy(localStrategy));
+    passport.use('alocal',new LocalStrategy(localStrategy));
     passport.use(new FacebookStrategy(facebookConfig, facebookStrategy));
 //    passport.serializeUser(serializeUser);
   //  passport.deserializeUser(deserializeUser);

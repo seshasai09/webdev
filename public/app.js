@@ -34,7 +34,7 @@ module.exports = function(app,db) {
         console.log("in deserailize");
         console.log(user);
 
-        if(user.type != undefined) {
+        if(user.type) {
             projectUsermodel
                 .findUserById(user._id)
                 .then(

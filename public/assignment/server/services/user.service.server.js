@@ -33,7 +33,7 @@ module.exports=function(app,model){
     passport.deserializeUser(deserializeUser);*/
 
     function localStrategy(username, password, done){
-        console.log("in local strategy");
+        console.log("in local strategy j zc  xzc ,");
 
         model.findUserByUsername(username)
             .then(function(user){
