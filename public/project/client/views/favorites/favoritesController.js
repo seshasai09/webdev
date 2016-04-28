@@ -2,22 +2,48 @@
     angular.module('MSocialApp')
         .controller('favoritesController',favoritesController);
 
-    function favoritesController($scope,FavoriteService){
-         $scope.favorites =FavoriteService.getFavorites();
-        console.log( $scope.favorites);
+    function favoritesController(UserService,SongService){
 
-        $scope.update=update;
-        $scope.delete=deleteFav;
 
-        function update(track,review){
-            console.log(track);
-            console.log("review"+review);
-            FavoriteService.addReview(track,review);
+            var vm = this;
+
+        vm.remove=remove;
+        init();
+        function init(){
+            UserService.getCurrentUser()
+                .then(function(response){
+                    SongService.getuserFavorit(response.data._id).
+                    then(function(response){
+                        /*console.log("favorites");
+                        console.log(response);*/
+                        vm.tracks = response.data;
+                    });
+                },function(err){
+                    console.log(err);
+                });
+
         }
 
-        function deleteFav(track){
 
-            FavoriteService.deleteTrackfromFavorites(track);
+        function remove(trackId){
+
+            UserService.getCurrentUser()
+                .then(function(response){
+                    SongService.removeSongFromFavorite(response.data._id,trackId).
+                    then(function(response){
+                        console.log("favorites");
+                         console.log(response);
+                        vm.tracks = response.data;
+                    });
+                },function(err){
+                    console.log(err);
+                });
         }
+
+
+
+
+
+
     }
 })();

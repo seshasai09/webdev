@@ -1,6 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');// to parse jason objects from header
 var passport = require('passport')
+var multer        = require('multer');
 var cookieParser = require('cookie-parser');// to parse cookies from header
 var session = require('express-session');//node module . once loaded we need to configure
 //var uuid = require('node-uuid');
@@ -26,6 +27,7 @@ var secret = process.env.PASSPORT_SECRET;
 if(process.env.OPENSHIFT_PASSPORT_SECRET){
     secret = process.env.OPENSHIFT_PASSPORT_SECRET;
 }
+multer();
 app.use(session({secret:secret,
     resave:true,
     saveUninitialized: true   }));
@@ -38,6 +40,7 @@ var port = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 app.get('/hello', function(req, res){
     res.send('hello world!');
 });
-require("./public/assignment/server/app.js")(app,db);
-require("./public/project/server/app.js")(app,db);
+//require("./public/assignment/server/app.js")(app,db);
+//require("./public/project/server/app.js")(app,db);
+require("./public/app")(app,db);
 app.listen(port, ipaddress);

@@ -1,0 +1,44 @@
+<div>
+    <div>
+        <h2>Discussion Topics</h2>
+        <div ng-show="model.user.type =='artist'">
+            <h3>
+                Create Discussion
+            </h3>
+        <h5>Name</h5>
+        <input type="text" placeholder="TITLE" ng-model="model.newdiscussion.name">
+
+        <h5>Description</h5>
+
+            <textarea placeholder="Description" ng-model="model.newdiscussion.description">
+
+            </textarea>
+        </div>
+        <button ng-show="model.user.type =='artist'" ng-click="model.createDiscussion()">Create</button>
+    </div>
+    <br>
+<div class="col-sm-10 col-md-10 col-lg-10">
+    <table class="table table-responsive table-bordered">
+        <thead>
+        <td>   Discussion Title        </td>
+        <td>  Discussion Discussion     </td>
+        <td>     Created Date      </td>
+        <td>    Delete Discussion    </td>
+        </thead>
+        <tbody>
+        <tr ng-repeat="discussion in model.discussions">
+            <!--<td><a  ng-click="model.navigate({{discussion._id}})">{{discussion.name}}</a></td>-->
+            <td><a  ng-click="model.navigate(discussion._id,discussion.createdby)">{{discussion.name}}</a></td>
+            <td>{{discussion.description}}</td>
+            <td>{{discussion.createddate}}</td>
+           <td> <button ng-click="model.deleteDiscussion(discussion._id)">Delete</button></td>
+        </tr>
+
+
+        </tbody>
+
+    </table>
+</div>
+
+
+</div>

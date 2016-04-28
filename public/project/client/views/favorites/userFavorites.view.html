@@ -1,44 +1,32 @@
+<!--<div>
+    <table class="col-sm-1 col-md-1">
 
-<div class="col-sm-10" >
-    <div class="tab-content">
-        <div style="text-align: left"><h2>Favorites</h2></div>
-        <div class="col-sm-10" >
-            <form id="register" name="resister" class="form-horizontal;" >
+        <div  ng-repeat="track in model.tracks">
+            <div class="col-sm-6 col-md-3">
+                <div class="thumbnail tile tile-medium tile-teal">
+                    <image ng-src="{{track.image}}"> </image>
+                </div>
+                Name:{{track.name}}
+                Artist:{{track.artist}}
+                <button ng-click="model.remove(track._id)">Remove</button>
+            </div>
 
-                <table class="table table-responsive table-bordered ">
-                    <thead>
-                    <td><span ng-click="sortfield='user.username';reverse=!reverse"
-                              class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Track Name</td>
-                    <td><span ng-click="sortfield='user.password';reverse=!reverse"
-                              class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Artist</td>
-                    <td><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Image</td>
-                    <td><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Review</td>
-                    <td><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Update</td>
-                    <td><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Delete</td>
-                    <!--<tr><td><input ng-model="nuser.username" type="text" placeholder="username"></td>-->
-                    <!--<td><input ng-model="nuser.password" type="password" placeholder="password"></td>-->
-                    <!--<td><input ng-model="nuser.roles" type="text" placeholder="role1|role2"></td>-->
-                    <!--<td>-->
-                    <!--<span class="glyphicon glyphicon-plus" ng-click="addUser()" aria-hidden="true"></span>-->
-                    <!--<span class="glyphicon glyphicon-ok" ng-click="updateUser()" aria-hidden="true"></span>-->
-                    <!--</td></tr>-->
-                    </thead>
-                    <tbody>
-                    <tr ng-repeat="track in favorites | orderBy:sortfield:reverse ">
-                        <td>{{track.name}}</td>
-                        <td>{{track.artist.name}}</td>
-                        <td><img ng-src="{{track.image[3]['#text']}}"> </td>
-                        <td><textarea ng-model="track.review" style="background-color: transparent;"></textarea></td>
-                        <td><a ng-click="update(track,track.review)">Update</a></td>
-                        <td><a ng-click="delete(track)">Delete</a></td>
-                        </td></tr>
-
-
-                    </tbody>
-                </table>
-
-            </form>
         </div>
-    </div>
-</div>
+    </table>
+</div>-->
+<div>
+    <table class="col-sm-1 col-md-1">
 
+        <div  ng-repeat="track in model.tracks">
+            <div class="col-sm-6 col-md-3">
+                <div class="thumbnail tile tile-medium tile-teal">
+                    <image ng-src="{{track.image}}"> </image>
+                </div>
+                Name:{{track.name}}
+                Artist:{{track.artist}}
+                <button ng-click="model.remove(track._id)">Remove</button>
+            </div>
+
+        </div>
+    </table>
+</div>

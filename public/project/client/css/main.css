@@ -28,7 +28,7 @@
 }
 body {
   padding-top: 80px;
-  color: #34495e;
+  color: black;
   background: #f5f5f5;
   font-family: 'Roboto', sans-serif;
   font-weight: 300;
@@ -43,7 +43,7 @@ h6 {
   font-weight: 400;
 }
 a {
-  color: #34495e;
+  color: black;
   -webkit-transition: 300ms;
   -moz-transition: 300ms;
   -o-transition: 300ms;
@@ -284,7 +284,7 @@ body > section {
   background-color: #bdc3c7;
 }
 .wet-asphalt {
-  background-color: #34495e;
+  background-color: #B0E0E6;
 }
 .wet-asphalt a:not(.btn) {
   color: #bdc3c7;
@@ -485,7 +485,7 @@ body > section {
   margin: 0;
   padding: 10px 0;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 20px;
   color: #2c3e50;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -583,8 +583,8 @@ body > section {
   transition: 300ms;
 }
 #pricing-table .plan li.plan-name {
-  font-size: 24px;
-  line-height: 24px;
+  font-size: 30px;
+  line-height: 30px;
   color: #fff;
 }
 #pricing-table .plan li.plan-name h3 {
@@ -714,9 +714,9 @@ ul.tag-cloud li {
 }
 .navbar-inverse .navbar-brand {
   font-family: 'Bubbler One', sans-serif;
-  font-size: 36px;
+  font-size: 50px;
   line-height: 50px;
-  color: #fff;
+  color: black;
 }
 .navbar-inverse .navbar-nav {
   margin-top: 20px;
@@ -725,7 +725,7 @@ ul.tag-cloud li {
   padding-top: 7px;
   padding-bottom: 7px;
   border-radius: 4px;
-  color: #bdc3c7;
+  color: black;
 }
 .navbar-inverse .navbar-nav > .active > a,
 .navbar-inverse .navbar-nav > .active > a:hover,
@@ -736,7 +736,7 @@ ul.tag-cloud li {
   background-color: #2c3e50;
 }
 .navbar-inverse .navbar-nav .dropdown-menu {
-  background-color: #2c3e50;
+  background-color: black;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
@@ -746,18 +746,18 @@ ul.tag-cloud li {
 }
 .navbar-inverse .navbar-nav .dropdown-menu > li > a {
   padding: 8px 15px;
-  color: #bdc3c7;
+  color: black;
 }
 .navbar-inverse .navbar-nav .dropdown-menu > li:hover > a,
 .navbar-inverse .navbar-nav .dropdown-menu > li:focus > a,
 .navbar-inverse .navbar-nav .dropdown-menu > li.active > a {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: black;
 }
 .navbar-inverse .navbar-nav .dropdown-menu > li:last-child > a {
   border-radius: 0 0 3px 3px;
 }
 .navbar-inverse .navbar-nav .dropdown-menu > li.divider {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: black;
 }
 .navbar-inverse .navbar-collapse,
 .navbar-inverse .navbar-form {
@@ -829,7 +829,7 @@ ul.tag-cloud li {
 .modal .modal-header > h4 {
   font-weight: 300;
   font-size: 14px;
-  color: #848484;
+  color: black;
   text-transform: uppercase;
   margin: 0;
 }
@@ -922,7 +922,7 @@ ul.cross li::after,
 ul.star li::after,
 ul.rss li::after {
   font-family: FontAwesome;
-  font-size: 11px;
+  font-size: 15px;
 }
 ul.arrow li::before,
 ul.arrow-double li::before,
@@ -985,7 +985,7 @@ ul.social > li > a {
   color: #666;
 }
 ul.social > li > a:hover {
-  color: #999;
+  color: black;
 }
 .box-border {
   padding: 15px;
@@ -1021,12 +1021,12 @@ ul.social > li > a:hover {
 }
 .blog .blog-item .entry-meta > span {
   display: inline-block;
-  color: #999;
+  color: black;
   margin-right: 10px;
   font-size: 12px;
 }
 .blog .blog-item .entry-meta > span a {
-  color: #999;
+  color: black;
 }
 ul.pagination > li > a {
   border: 0;
@@ -1072,7 +1072,7 @@ ul.faq li span.number {
   height: 50px;
   line-height: 50px;
   text-align: center;
-  background: #34495e;
+  background: black;
   color: #fff;
   font-size: 24px;
 }

@@ -15,8 +15,8 @@
 
         }
 
-        function likePost(artistId,postId){
-            return $http.get("/api/project/artist/"+artistId+"/post/"+postId+"");
+        function likePost(artistId,post){
+            return $http.put("/api/project/artist/"+artistId+"/post/",post);
 
         }
     }

@@ -1,0 +1,36 @@
+<div class="col-sm-8">
+    <div> Add Artist <input type="text" ng-model="model.name" placeholder="Enter Artist Name">
+        <button ng-click="model.addAllArtists()">Add</button>
+    {{model.status}}</div>
+    <div> View All Artists <button class="form-inline"  ng-click="model.viewAllArtists()">View All Artists</button>
+     View All Users <button  class="form-inline" ng-click="model.viewAllUsers()">View All Users</button></div>
+    <table class="table table-responsive table-bordered ">
+        <thead>
+        <td>Artist Name</td>
+        <td>Delete From List</td>
+        </thead>
+        <tbody>
+        <tr ng-repeat="artist in model.artists ">
+            <td>{{artist.username}}</td>
+            <td ng-show="artist.type==undefined"><a id ="flogin" ng-click="model.artistRequestDelete(artist.username)"
+                   class="btn btn-warning btn-block form-control">
+                <span class="fa "></span>
+                Delete
+            </a></td>
+            <td ng-show="artist.type=='user'"><a  ng-click="model.userDelete(artist)"
+                   class="btn btn-warning btn-block form-control">
+                <span class="fa "></span>
+                Delete
+            </a></td>
+            <td ng-show="artist.type=='artist'"><a  ng-click="model.artistDelete(artist)"
+                   class="btn btn-warning btn-block form-control">
+                <span class="fa "></span>
+                Delete
+            </a></td>
+        </tr>
+
+
+        </tbody>
+    </table>
+
+</div>

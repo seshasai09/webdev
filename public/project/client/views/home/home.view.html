@@ -1,5 +1,12 @@
+<div class="col-lg-2 col-md-4 col-xs-6 thumb " style="float: right"  >
+    <a class="thumbnail" href="#/getSearchVideos">
+       <!-- <img class="img-responsive" ng-src="model.user.imageMURL" >-->
+        <img ng-src="{{model.user.imageMURL}}" class="img-responsive">
 
-<div ng-controller="homecontroller">
+    </a>
+</div>
+<div  class="  col-xs-10 col-sm-10 col-md-10">
+
 
 <!--<div class="col-sm-8">
 Welcome! {{currentUser.firstName}}
@@ -16,20 +23,34 @@ ultricies metus viverra. Pellentesque arcu mauris, malesuada quis
 ornare accumsan, blandit sed diam.
 </div>-->
   <!-- <div ng-show="user.type == 'artist">-->
-       <div>
+       <div ng-show="model.user.type =='artist'">
            <input  class="" size="75"type="text" ng-model="model.post.data">
            <button class=" btn-info" ng-click="model.post()">Post</button>
        </div>
   <!-- </div>-->
 <div>&nbsp</div>
-    <div ng-repeat="post in model.posts">
-       <!-- <div><input size="100" type="text" readonly ng-model="post.content"></div>-->
-        <div >
+  <!--  <div ng-repeat="post in model.posts">
+       &lt;!&ndash; <div><input size="100" type="text" readonly ng-model="post.content"></div>&ndash;&gt;
+        <div ><img ng-src="{{model.user.imageSURL}}">
             <textarea readonly cols="75">{{post.content}}</textarea></div>
             {{post.like}}<i class="fa fa-thumbs-o-up fa-2x" aria-hidden="true" ng-click="model.likePost(post._id)"></i>
             <i class="fa fa-times fa-2x" aria-hidden="true" ng-click="model.deletePost(post._id)"></i>
 
 
+
+    </div>-->
+
+    <div ng-repeat="post in model.psts">
+        <!--&lt;!&ndash; <div><input size="100" type="text" readonly ng-model="post.content"></div>&ndash;&gt;-->
+        <div ><img ng-src="{{post.image}}">
+            <textarea ng-show="{{model.user.type=='user'}}" readonly cols="60">{{post.content.content}}</textarea>
+            <textarea ng-show="{{model.user.type=='artist'}}" readonly cols="60">{{post.content}}</textarea>
+            <div ng-show="{{model.user.type=='user'}}">{{post.like}}<i class="fa fa-thumbs-up fa-2x" aria-hidden="true" ng-click="model.likePost(model.user._id,post.content)"></i></div>
+            <div ng-show="{{model.user.type=='artist'}}">{{post.like}}<i class="fa fa-thumbs-up fa-2x" aria-hidden="true" ng-click="model.likePost(model.user._id,post)"></i></div>
+            </div>
+
+
     </div>
+
 
 </div>

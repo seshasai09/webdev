@@ -16,7 +16,8 @@
 
     function UserService($http,$rootScope){
         var api={
-            login: login,
+            userLogin: userLogin,
+            artistLogin:artistLogin,
             findAllUsers: findAllUsers,
             createUser: createUser,
             deleteUserById: deleteUserById,
@@ -24,7 +25,10 @@
             getCurrentUser: getCurrentUser,
             setCurrentUser:setCurrentUser,
             logout: logout,
-            post:post
+            post:post,
+            getposts:getposts,
+            getArtistposts:getArtistposts,
+            getCurrentArtist:getCurrentArtist
         };
         return api;
         var currentuser=null;
@@ -33,25 +37,38 @@
 
 
         function getCurrentUser(){
-            return $http.get("/api/project/isLoggedin");
+
+                return $http.get("/api/project/isLoggedin");
+
+        }
+
+        function getCurrentArtist(){
+            return $http.get('/api/project/artist/isLoggedin');
         }
 
         function  setCurrentUser(user){
             $rootScope.currentUser=user;
+
             console.log($rootScope.currentUser);
 
         }
 
-        function login(user, callback){
+        function userLogin(user, callback){
             console.log("in user service"+user);
 
-           // return $http.post("/api/project/login",user);
+           return $http.post("/api/project/login",user);
+       //    return $http.post("/api/project/artist/login",user);
+
+        }
+        function artistLogin(user, callback){
+            console.log("in artist service"+user);
+
+            //   return $http.post("/api/project/login",user);
             return $http.post("/api/project/artist/login",user);
 
         }
         function findAllUsers(callback){
-            console.log(users);
-            callback(users);
+            return $http.get("/api/project/users/all");
 
         }
         function createUser(user){
@@ -60,43 +77,34 @@
             //callback(users);
         }
 
-        function deleteUserById(userId, callback){
-            var index=-1;
 
-            for(u in users){
-                index++;
-                if(users[u]._id==userId){
-                    break;
-                }
+        function deleteUserById(userId){
+            return $http.delete("/api/project/admin/user/"+userId+"");
             }
-            users.splice(index,1);;
-        }
+
 
         function logout(){
+            $rootScope.currentUser=null;
+            $rootScope.admin=false;
             return $http.post("/api/project/logout");
         }
-        function updateUser(userId, user,callback){
-            console.log("user id update"+userId);
-            console.log("user id update"+user.username);
-            for(var u in users)
-            {
-                if(users[u]._id == userId )
-                {
-                    var index= users.indexOf(u);
-                    users[u]=user;
-                    console.log(users);
-                    console.log(users[index]);
-                    break;
-
-                }
-            }
-            callback(user);
+        function updateUser(userId, user){
+                return $http.put("/api/project/user/"+userId+"",user);
         }
 
 
         function  post(userid,post){
             console.log(post);
             return $http.post('/api/project/artist/post/'+userid+'',post);
+        }
+
+        function getposts(userid){
+            console.log("get posts for user");
+            return $http.get('/api/project/user/post/'+userid+'');
+        }
+
+        function getArtistposts(userid){
+            return $http.get('/api/project/artist/post/'+userid+'');
         }
 
     }

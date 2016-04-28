@@ -15,8 +15,11 @@
          //   $location.path('/home');
             UserService.logout()
                 .then(function(){
-                    UserService.setCurrentUser(null);
-                    $location.path('/home');
+                    UserService.logout()
+                        .then(function(response){
+                            $location.path('/login');
+                        });
+
                 });
         }
 

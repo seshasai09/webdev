@@ -26,7 +26,7 @@
                     <tr ng-repeat="track in tracks | filter: track.id.kind='youtube#video' ">
                         <td>{{track.snippet.title}}</td>
                         <!--<td>{{artist.name}}</td>-->
-                        <td><a ng-click="openVideo(track.id.videoId)">{{track.id.videoId}}</a></td>
+                        <td><a ng-click="openVideo(track.id.videoId)">Watch Video</a></td>
                         <!--<td><a ng-click="watch({{track.id.videoId}})">watch</a></td>-->
                         <td><img ng-src="{{track.snippet.thumbnails.medium.url}}" ></image></td>
                         <!--<td><img ng-src="{{track.image[0].#text}}"> </td>-->

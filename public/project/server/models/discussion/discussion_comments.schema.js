@@ -6,7 +6,9 @@ module.exports = function(){
         createddate:{
             type:Date,
             default:Date.now()
-        }
+        },
+        createdBy: String,
+        likes: [String]
     },{collection:'discussion_comment'});
 
     return Discussion_CommentsSchema;

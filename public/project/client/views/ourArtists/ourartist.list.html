@@ -1,0 +1,22 @@
+<div class="col-sm-10 col-md-10 col-lg-10">
+<table class="table table-responsive  ">
+    <thead>
+    <td>Image</td>
+    <td><span ng-click="sortfield='user.username';reverse=!reverse"
+              class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Artist Name</td>
+    <td><span ng-click="sortfield='user.password';reverse=!reverse"
+              class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Follow</td>
+    </thead>
+    <tbody>
+    <tr ng-repeat="artist in model.artists | orderBy:sortfield:reverse ">
+        <td><img ng-src="{{artist.imageMURL}}" ></image></td>
+        <td><a ng-click="model.viewProfile(artist._id)">{{artist.name}}</a></td>
+        <td><button ng-click="model.follow(artist._id)">Follow</button></td>
+        <!--<td><img ng-src="{{artist.images[2]['#text']}}" ></image></td>-->
+
+    </tr>
+
+
+    </tbody>
+</table>
+</div>

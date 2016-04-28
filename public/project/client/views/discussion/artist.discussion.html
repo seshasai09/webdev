@@ -1,0 +1,23 @@
+
+<div class="  col-xs-8 col-sm-8 col-md-8 " >
+    <h2>Title :{{model.discussion.name}}</h2>
+    <h4>Description : {{model.discussion.description}}</h4>
+
+    <div>
+       Your Opinion <div> <input  class="" size="75"type="text" ng-model="model.newcomment">
+        <button class=" btn-info" ng-click="model.comment()">Comment</button>
+    </div>
+    </div>
+    <!-- </div>-->
+    <div>&nbsp</div>
+    <div ng-repeat="comment in model.discussion.discussion_comments" align="left">
+        <!-- <div><input size="100" type="text" readonly ng-model="post.content"></div>-->
+        {{comment.createdBy}} says
+        <div >
+            <textarea readonly cols="75">{{comment.content}}</textarea></div>
+        {{comment.likes.length}}<i class="fa fa-thumbs-o-up fa-2x" aria-hidden="true" ng-click="model.likeComment(comment._id)"></i>
+
+
+    </div>
+
+</div>

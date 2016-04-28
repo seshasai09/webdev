@@ -17,9 +17,12 @@
             var user = {
                 username: vm.user.username,
                 password: vm.user.password,
-                email: vm.user.email,
-                roles: []
+                email: vm.user.email
             };
+            if(vm.user.vpassword!=vm.user.password){
+                alert("password should be same");
+                return;
+            }
             UserService.createUser(user)
                 .then(function (response) {
                     var currentUser = response.data;

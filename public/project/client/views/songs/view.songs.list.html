@@ -1,0 +1,16 @@
+<div>
+    <table class="col-sm-1 col-md-1">
+
+    <div  ng-repeat="track in model.tracks">
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail tile tile-medium tile-teal">
+               <image ng-src="{{track.album.images[0].url}}"> </image>
+            </div>
+            Name:{{track.name}}
+            Popularity:{{track.popularity}}
+            <button ng-click="model.favorite($index)">Favorite</button>
+        </div>
+
+    </div>
+    </table>
+</div>

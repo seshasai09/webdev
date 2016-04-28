@@ -11,8 +11,8 @@ module.exports = function(){
           type:Date,
           default: Date.now()
       },
-      createdby:String,
-      active:Boolean
+      active:Boolean,
+      createdby: String
   },{collection:'discussion'});
 
     return DiscussionSchema;

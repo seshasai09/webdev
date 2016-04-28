@@ -39,7 +39,10 @@
                 .when('/admin',{
                     templateUrl: "views/admin/admin.view.html",
                     controller: "AdminController",
-                    controllerAs: "model"
+                    controllerAs: "model",
+                    resolve: {
+                        checkLoggedIn: checkLoggedIn
+                    }
 
                 })
                 .when('/forms',{
@@ -88,8 +91,60 @@
                 .when('/favorites',{
                     templateUrl: "views/favorites/userFavorites.view.html",
                     controller: "favoritesController",
-                    controllerAs: "model"
+                    controllerAs: "model",
+                    resolve: {
+                        checkLoggedIn: checkLoggedIn
+                    }
 
+                })
+                .when('/adminAllFunctions',{
+                    templateUrl: "views/admin/admin.view.all.functions.html",
+                    controller: "AdminAllFunctionsController",
+                    controllerAs: "model",
+                    resolve: {
+                        checkLoggedIn: checkLoggedIn
+                    }
+                })
+                .when('/discussions',{
+                    templateUrl: "views/discussion/artist.discussion.list.html",
+                    controller: "DiscussionController",
+                    controllerAs: "model",
+                    resolve: {
+                        checkLoggedIn: checkLoggedIn
+                    }
+                })
+                .when('/viewdiscussion/:artistId/discussion/:discussionId',{
+                    templateUrl: "views/discussion/artist.discussion.html",
+                    controller: "DiscussionController",
+                    controllerAs: "model",
+                    resolve: {
+                        checkLoggedIn: checkLoggedIn
+                    }
+                })
+                .when('/ourArtists',{
+                    templateUrl: "views/ourArtists/ourartist.list.html",
+                    controller: "OurArtistController",
+                    controllerAs: "model"
+                })
+                .when('/artistDetails/:artistId',{
+                    templateUrl: "views/ourArtists/view.artist.html",
+                    controller: "ArtistDetailsController",
+                    controllerAs: "model"
+                })
+                .when('/songs/:artistId',{
+                    templateUrl: "views/songs/view.songs.list.html",
+                    controller: "SongsController",
+                    controllerAs: "model"
+                })
+                .when('/artistRegisterRequest',{
+                    templateUrl: "views/ArtistRegisterRequest/artist.register.html",
+                    controller: "ArtistRegisterController",
+                    controllerAs: "model"
+                })
+                .when('/mSocial',{
+                    templateUrl: "sliderfiles/landing.html",
+                  //  controller: "CarouselDemoCtrl",
+                  //  controllerAs: "model"
                 })
                 .otherwise({
                     redirectTo:"/"
@@ -98,19 +153,23 @@
                 var deferred = $q.defer(); // create instance of deferred object which contains promise
                 // to resolve we are explicity using angulars $q angulars promise. We can create and
 
-                UserService.getCurrentUser()
-                    .then(function(response){
-                        var currentUser= response.data;
-                        if(currentUser){
-                            UserService.setCurrentUser(currentUser);
-                            console.log("user logged in");
-                            deferred.resolve();//manage the promise bt resolving it
-                        }else{
-                            deferred.reject();//rejecting the promise
-                            console.log("user not logged iin");
-                            $location.url("/login");
-                        }
-                    });
+                    console.log("artist");
+                    UserService.getCurrentUser()
+                        .then(function(response){
+                            var currentUser= response.data;
+                            if(currentUser){
+                                UserService.setCurrentUser(currentUser);
+                                console.log("user logged in");
+                                deferred.resolve();//manage the promise bt resolving it
+                            }else{
+                                deferred.reject();//rejecting the promise
+                                console.log("user not logged iin");
+                                $location.url("/login");
+                            }
+                        });
+
+
+
                 return deferred.promise;
             }
 

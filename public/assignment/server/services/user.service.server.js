@@ -28,9 +28,9 @@ module.exports=function(app,model){
 
     passport.use('local',new LocalStrategy(localStrategy)); // we use local strategy and the configuration for the strategy is 'localstrategy is
     //  function we define in this class'
-    passport.serializeUser(serializeUser);// callback function that enciphering and deciphhering the cookie
+    /*passport.serializeUser(serializeUser);// callback function that enciphering and deciphhering the cookie
     //passes us current uer object
-    passport.deserializeUser(deserializeUser);
+    passport.deserializeUser(deserializeUser);*/
 
     function localStrategy(username, password, done){
         console.log("in local strategy");
@@ -59,7 +59,7 @@ module.exports=function(app,model){
             });
     }
 
-    function serializeUser(user,done){
+  /*  function serializeUser(user,done){
         done(null,user);
     }
 
@@ -70,7 +70,7 @@ module.exports=function(app,model){
             },function(err){
                 done(err,null);
             });
-    }
+    }*/
 
     var uuid = require('uuid');
 

@@ -2,24 +2,36 @@
 <div class="row no-gutter col-sm-2">
     <div class="table-responsive  nopadding collapse navbar-collapse">
         <table  class=" nav navbar-nav; table table-bordered; " border="solid" style="float: left; empty-cells: show"  >
-            <tr>
+            <tr ng-show="currentUser!=null">
                 <td><a href="#/home">Home</a></td>
             </tr>
-            <tr ng-show="currentUser!=null">
+            <tr ng-show="currentUser!=null && currentUser.type=='admin'">
+                <td><a href="#/adminAllFunctions">AdminAll Functions</a></td>
+            </tr>
+            <tr ng-show="currentUser!=null && currentUser.type=='user'">
                 <td><a  href="#/profile">Profile</a></td>
             </tr>
-            <tr ng-show="currentUser!=null">
+            <tr ng-show="currentUser!=null && currentUser.type=='artist'">
                 <td><a  href="#/artistProfile">Artist Profile</a></td>
             </tr>
 
-            <tr ng-show="currentUser!=null" >
+            <tr >
                 <td><a href="#/toptracks">Show Top Tracks </a></td>
             </tr>
             <tr ng-show="currentUser!=null" >
                 <td><a href="#/searchArtist">Search Artist </a></td>
             </tr>
-            <tr ng-show="currentUser!=null" >
+            <tr >
+                <td><a href="#/ourArtists">Artists with Us </a></td>
+            </tr>
+            <tr  >
                 <td><a href="#/getSearchVideos">Search Videos</a></td>
+            </tr>
+            <tr ng-show="currentUser!=null" >
+                <td><a href="#/discussions">Discussions</a></td>
+            </tr>
+            <tr ng-show="currentUser!=null && currentUser.type=='user' " >
+                <td><a href="#/favorites">My Favorite Songs</a></td>
             </tr>
             <tr height="300px">
                 <td>&nbsp</td>

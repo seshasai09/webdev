@@ -10,11 +10,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
 
+
+
+  <!--  <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>-->
+
+
     <link href="custom.css" rel="stylesheet" type="text/css">
     <!--<script src="custom.css"></script>-->
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular-route.js"></script>
+
+
+
+
+
+
+
     <link href='http://fonts.googleapis.com/css?family=Gloria+Hallelujah' rel='stylesheet' type='text/css'>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
@@ -31,8 +43,20 @@
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
 
 
+
+
+
+
+
+
+
+
+
+
+
     <script src="app.js"></script>
     <script src="config.js"></script>
+
 
     <script src="views/main/main.controller.js"></script>
     <script src="views/header/header.controller.js"></script>
@@ -40,8 +64,11 @@
     <script src="views/users/login.controller.js"></script>
     <script src="services/user.service.client.js"></script>
     <script src="views/home/home.controller.js"></script>
+
+
     <script src="views/users/register.controller.js"></script>
     <script src="views/users/profile.controller.js"></script>
+    <script src="views/admin/admin.allfunctions.controller.js"></script>
     <script src="views/admin/admin.controller.js"></script>
     <script src="views/forms/forms.controller.js"></script>
     <script src="services/forms.service.client.js"></script>
@@ -54,11 +81,22 @@
     <script src="views/favorites/favoritesController.js"></script>
     <script src="views/artist/artistprofile.controller.js"></script>
     <script src="services/post.service.client.js"></script>
+    <script src="services/discussion.service.client.js"></script>
+    <script src="views/discussion/artist.discussion.controller.js"></script>
+    <script src="services/ourartists.service.client.js"></script>
+    <script src="views/ourArtists/our.artist.controller.js"></script>
+    <script src="views/ourArtists/artist.details.controller.js"></script>
+    <script src="services/song.service.client.js"></script>
+    <script src="views/songs/songs.controller.js"></script>
+    <script src="views/ArtistRegisterRequest/artist.register.controller.js"></script>
+
+
+
 
 
 
 </head>
-<body ng-controller="MainController as model">
+<body ng-controller="MainController as model" style="background-color: mintcream">
 <div  ng-include="'views/header/header.view.html'"></div>
 <div ng-show="currentUser!=null" ng-include="'views/sidebar/sidebar.view.html'"></div>
 
@@ -75,5 +113,13 @@
 <script src="js/main.js"></script>
 
 
+
+
+
+
+
 </body>
+
+
+
 </html>

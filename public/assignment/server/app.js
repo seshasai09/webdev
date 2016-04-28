@@ -1,5 +1,5 @@
-module.exports=function(app,db){
-    var userModel = require("./model/user.model.server.js")(db);
+module.exports=function(app,db,userModel){
+   // var userModel = require("./model/user.model.server.js")(db);
     var formModel = require("./model/form.model.js")(db);
    // var fieldModel = require("./model/field.model.js")(db);
     var userService=require("./services/user.service.server.js")(app,userModel);

@@ -35,14 +35,18 @@
 
 </head>
 <body ng-controller="MainController">
+
 <div ng-include="'views/header/header.view.html'"></div>
-<div ng-include="'views/sidebar/sidebar.view.html'"></div>
+  <div class="col-xs-2 col-sm-2">
+    <div ng-include="'views/sidebar/sidebar.view.html'"></div>
+      </div>
 
 
 
 <div class="container container-fluid">
-<!--<div ng-include="'views/users/login.view.html'"></div>-->
+<div class="row col-xs-10 col-sm-10">
 <div ng-view>
+</div>
 
 </div>
 

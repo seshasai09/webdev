@@ -14,7 +14,6 @@
                     <td><span
                             class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Listners</td>
                     <td><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Image</td>
-                    <td><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>Favorite</td>
                     <!--<tr><td><input ng-model="nuser.username" type="text" placeholder="username"></td>-->
                         <!--<td><input ng-model="nuser.password" type="password" placeholder="password"></td>-->
                         <!--<td><input ng-model="nuser.roles" type="text" placeholder="role1|role2"></td>-->
@@ -29,8 +28,7 @@
                         <td>{{track.artist.name}}</td>
                         <td>{{track.listeners}}</td>
                         <td><img ng-src="{{track.image[3]['#text']}}"> </td>
-                        <td>   <input ng-change="favorite(track)" type="checkbox" ng-model="track.favorite" />  </td>
-                        </td></tr>
+                        </tr>
 
 
                     </tbody>

@@ -1,0 +1,24 @@
+<div>
+<div class="form-group row">
+    <label for="name" class="col-sm-2 form-control-label">Enter Your Name</label>
+    <div class="col-sm-4">
+        <input type="text" style="background: transparent" class="form-control" ng-model="model.artistName" id="name" placeholder="Artist Name">
+    </div>
+</div>
+<div class="form-group row " >
+    <label for="flogin" class="col-sm-2 form-control-label"></label>
+    <div class="col-sm-4">
+        <a id ="flogin" ng-click="model.artistRequest()"
+           class="btn btn-primary btn-block form-control">
+            <span class="fa "></span>
+            Send Request
+        </a>
+    </div>
+</div>
+    <div class="form-group row" ng-show="model.status!=null">
+        <label for="status" class="col-sm-2 form-control-label">Enter Your Name</label>
+        <div class="col-sm-4" id="status">
+            <span>{{model.status}}</span>
+        </div>
+    </div>
+</div>

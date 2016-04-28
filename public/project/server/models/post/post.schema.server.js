@@ -8,10 +8,8 @@ module.exports = function(){
             type: Date,
             default: Date.now()
         },
-        like:{
-            type: Number,
-            default: 0
-        },
+        like:[String],
+        createdBy:String,
         postcomment :[PostCommentSchema]
 
     },{collection:'post'});
