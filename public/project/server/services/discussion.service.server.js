@@ -13,6 +13,7 @@ module.exports=function(app,Artistmodel) {
 
 
     function createDiscussion(req,res){
+        var discussions = new Array();
         var discussion =req.body;
         var id = req.params['id'];
         console.log(discussion);
@@ -22,17 +23,19 @@ module.exports=function(app,Artistmodel) {
                 model.getAllDiscussions()
                     .then(function(response){
                         for(var v in response){
+                            console.log("printig all discussions");
+                            console.log(response[v].discussion);
                             if(response[v].discussion.length>0) {
                                 /*var discu = {
                                  name: response[v].discussion.name,
                                  _id: response[v].discussion._id,
                                  description :response[v].discussion.description
                                  }*/
-                                discussion.push(response[v].discussion);
+                                discussions.push(response[v].discussion);
                             }
                         }
                         console.log(response);
-                        res.json(discussion);
+                        res.json(discussions);
                     },function(err){
                         console.log(err);
                     });

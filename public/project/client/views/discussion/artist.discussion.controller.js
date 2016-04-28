@@ -63,6 +63,7 @@
         init();
 
         function createDiscussion(){
+            var dis = new Array();
             var Discussion ={
                 name : vm.newdiscussion.name,
                 description : vm.newdiscussion.description
@@ -78,7 +79,14 @@
                     DiscussionService.createDiscussion(vm.user._id,Discussion)
                         .then(function(response){
                             console.log(response);
-                            vm.discussions = response.data;
+                            for(var v in response.data){
+                                for(var u in response.data[v]){
+                                    dis.push(response.data[v][u]);
+                                }
+                            }
+                            console.log(dis);
+                            vm.discussions =dis;
+                            vm.discussions = dis;
                         });
 
                 });
